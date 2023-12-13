@@ -33,7 +33,7 @@ class medical_patient(models.Model):
                 rd = relativedelta(d2, d1)
                 rec.age = str(rd.years) + "y" +" "+ str(rd.months) + "m" +" "+ str(rd.days) + "d"
             else:
-                rec.age = "No Date Of Birth!!"
+                rec.age = "Sin fecha de nacimiento Establecida!!"
 
     patient_id = fields.Many2one('res.partner',domain=[('is_patient','=',True)],string="Patient", required= True)
     name = fields.Char(string='ID', readonly=True)
@@ -45,7 +45,7 @@ class medical_patient(models.Model):
     photo = fields.Binary(string="Picture")
     blood_type = fields.Selection([('A', 'A'),('B', 'B'),('AB', 'AB'),('O', 'O')], string ="Blood Type")
     rh = fields.Selection([('-+', '+'),('--', '-')], string ="Rh")
-    marital_status = fields.Selection([('s','Single'),('m','Married'),('w','Widowed'),('d','Divorced'),('x','Seperated')],string='Marital Status')
+    marital_status = fields.Selection([('s','Soltero/ra'),('m','Casado/da'),('w','Viudo/da'),('d','Divorciado/da'),('x','Sepaparado/da')],string='Estado civil')
     deceased = fields.Boolean(string='Deceased')
     date_of_death = fields.Date(string="Date of Death")
     cause_of_death = fields.Char(string='Cause of Death')
