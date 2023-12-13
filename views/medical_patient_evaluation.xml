@@ -298,6 +298,8 @@
             <field name="model">medical.patient.evaluation</field>
             <field name="arch" type="xml">
                 <tree string="Evaluations">
+                <button name="action_view_medical_patient_evaluation_id_new" string="Crear Evaluación" type="object" class="oe_highlight"/>
+
                     <field name="medical_patient_id" string="Patient" />
                     <field name="end_evaluation" />
                     <field name="start_evaluation" />
