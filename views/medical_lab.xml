@@ -74,7 +74,7 @@
             </field>
         </record>
 
-        <record id="action_medical_lab_form" model="ir.actions.act_window">
+<!--         <record id="action_medical_lab_form" model="ir.actions.act_window">
             <field name="name">Lab Tests Results</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">medical.lab</field>
@@ -100,6 +100,6 @@
 
         <menuitem name="Lab Tests Results" id="menu_lab_test_result"
             parent="basic_hms.main_menu_laboratory" action="action_medical_lab_form"
-            sequence="0" />
+            sequence="0" /> -->
 
 </odoo>
