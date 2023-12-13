@@ -312,4 +312,23 @@
             </field>
         </record>
 
+   <record id="action_medical_medical_patient_evaluation" model="ir.actions.act_window">
+        <field name="name">Evaluaciones</field>
+        <field name="res_model">medical.patient.evaluation</field>
+        <field name="binding_view_types">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_view_medical_patient_evaluation_id_new" model="ir.actions.act_window">
+        <field name="name">Evaluaciones</field>
+        <field name="res_model">medical.patient.evaluation</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="domain">[('patient_id', '=', active_id)]</field>
+    </record>
+
+    <menuitem id="menu_medical_patient_evaluation" action="action_medical_medical_patient_evaluation"
+              parent="basic_hms.menu_appointment"
+              sequence="1"/>
+
 </odoo>
