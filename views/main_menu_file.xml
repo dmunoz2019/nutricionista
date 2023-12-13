@@ -2,36 +2,36 @@
 <openerp>                 
         <menuitem 
         	id="main_menu_hospital_management"
-        	name="Hospital Management"
+        	name="Nutrición"
             web_icon="basic_hms,static/description/icon.png"
            />
 
-         <menuitem name="Configuration"
+         <menuitem name="Configuración"
             id="main_menu_configartion"
             parent = "main_menu_hospital_management"
             sequence = '13'
             />
             
                
-    	<menuitem name="Laboratory"
+<!--     	<menuitem name="Laboratory"
             id="main_menu_conf_laboratory"
             parent = "main_menu_configartion"
             sequence='0'
-           />
+           /> -->
 
         <menuitem id="menu_nursing" name="Nursing"
             parent="main_menu_hospital_management"
             sequence="8" />
 
         <menuitem id="menu_appointment"
-            name='Appointments' parent="main_menu_hospital_management" sequence="1" />
+            name='Citas' parent="main_menu_hospital_management" sequence="1" />
 
         <menuitem id="menu_medical_health_service"
             name='Medical Service' parent="main_menu_hospital_management"
             sequence="11" />
 
-         <menuitem id="menu_inpatient_administration" name="Inpatient Administration"
-            parent="main_menu_hospital_management" sequence='2' />
+<!--          <menuitem id="menu_inpatient_administration" name="Inpatient Administration"
+            parent="main_menu_hospital_management" sequence='2' /> -->
 
         <menuitem id="menu_patients" name='Patients'
             parent="main_menu_hospital_management" sequence="0" />
