@@ -51,9 +51,9 @@
         <menuitem id="menu_genetic" name="Genetics"
             parent="main_menu_configartion" sequence='10' />
 
-
+<!-- 
         <menuitem id="menu_intensive_care" name="Intensive Care"
-            parent="menu_inpatient_administration" />
+            parent="menu_inpatient_administration" /> -->
 
         <menuitem id="menu_medical_management" name="Medical" />
 
