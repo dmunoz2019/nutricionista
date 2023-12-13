@@ -5,10 +5,10 @@
             <field name="name">medical.patients.form.view</field>
             <field name="model">medical.patient</field>
             <field name="arch" type="xml">
-                <form string="Patient">
+                <form string="Paciente">
                     <header>
                         <button name="print_report" type="object"
-                            string="Print Patient Card" class="oe_highlight" />
+                            string="Imprimir ficha de paciente" class="oe_highlight" />
                     </header>
                     <sheet>
                         <group>
@@ -30,45 +30,45 @@
 
                         <group>
                             <group>
-                                <field name="name" />
-                                <field name="date_of_birth" />
-                                <field name="marital_status" />
+                                <field name="name"  string="Nombre"/>
+                                <field name="date_of_birth"  string="Fecha de nacimiento"/>
+                                <field name="marital_status" string="Estado civíl" />
                             </group>
 
                             <group>
-                                <field name="sex" />
-                                <field name="age" readonly="1" />
+                                <field name="sex" string="Género" />
+                                <field name="age" readonly="1"  string="Edad"/>
                                 <field name="partner_address_id" invisible="1"/>
                                 <label for="partner_address_id" name="partner_address_id"/>
                                 <div class="o_address_format">
-                                    <field name="street" placeholder="Street..." class="o_address_street" />
-                                    <field name="street2" placeholder="Street 2..." class="o_address_street" />
-                                    <field name="city" placeholder="City" class="o_address_city" />
-                                    <field name="state_id" class="o_address_state" placeholder="State" options="{&quot;no_open&quot;: True}" />
+                                    <field name="street" string="Calle" placeholder="Calle ..." class="o_address_street" />
+                                    <field name="street2" string="Calle 2" placeholder="Calle 2..." class="o_address_street" />
+                                    <field name="city" string="Ciudad" placeholder="Ciudad" class="o_address_city" />
+                                    <field name="state_id" string="Departamento" class="o_address_state" placeholder="Departamento" options="{&quot;no_open&quot;: True}" />
                                     <field name="zip_code" placeholder="ZIP" class="o_address_zip"/>
-                                    <field name="country_id" placeholder="Country" class="o_address_country"/>
+                                    <field name="country_id" string="País" placeholder="País" class="o_address_country"/>
                                 </div>
                             </group>
                         </group>
 
                         <group>
                             <separator colspan="4"
-                                string="Patient Critical Information" />
+                                string="Información crítica" />
                             <newline />
                             <field colspan="2" name="critical_info"
                                 nolabel="1" />
                         </group>
                         <notebook>
-                            <page string="General Information">
-                                <group string="Patient General Information">
+                            <page string="Información General">
+                                <group string="Información General de paciente">
                                     <group>
-                                        <field name="blood_type" />
+                                        <field name="blood_type" string="Tipo de sangre" />
                                         <field name="current_insurance_id" />
                                     </group>
                                     <group>
                                         <field name="rh" />
                                         <field name="receivable" />
-                                        <field name="primary_care_physician_id" />
+                                        <field name="primary_care_physician_id"  />
                                     </group>
                                 </group>
 
