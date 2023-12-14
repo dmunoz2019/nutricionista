@@ -312,7 +312,7 @@
                             </page>
                             
             <page string="Ventas">
-            <field name="evaluation_order_lines" widget="section_and_note_one2many">
+            <field name="evaluation_sale_order_lines" widget="section_and_note_one2many">
                 <tree editable="bottom">
                     <control>
                         <create name="add_product_control" string="Add a product"/>

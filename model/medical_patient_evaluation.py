@@ -237,7 +237,7 @@ class medical_patient_evaluation(models.Model):
 	secondary_conditions_ids = fields.One2many('medical.secondary_condition','patient_evaluation_id','Secondary Conditions')
 	diagnostic_hypothesis_ids = fields.One2many('medical.diagnostic_hypotesis','patient_evaluation_id','Procedures')
 	procedure_ids = fields.One2many('medical.directions','patient_evaluation_id','Procedures')
-	evaluation_order_lines = fields.One2many('evaluation.order.line','evaluation_id','Lineas de venta')
+	evaluation_sale_order_lines = fields.One2many('evaluation.order.line','evaluation_id','Lineas de venta')
 
 	payment_term_id = fields.Many2one('account.payment.term',string="Payment Term")
 	
@@ -247,7 +247,7 @@ class medical_patient_evaluation(models.Model):
 		validity_date = self.start_evaluation + timedelta(days=1)
 		sale_order_vals = {
 			'partner_id': self.patient_id.id,
-			'order_line': [(6, 0, self.evaluation_order_lines.ids)],
+			'order_line': [(6, 0, self.evaluation_sale_order_lines.ids)],
 			'validity_date':  validity_date,
 			'date_order': self.start_evaluation.date(),
 			'payment_term_id': self.payment_term_id.id if self.payment_term_id else 1,
@@ -265,14 +265,14 @@ class medical_patient_evaluation(models.Model):
 			'context': self.env.context,
 		}
  
-	@api.depends('evaluation_order_lines')
+	@api.depends('evaluation_sale_order_lines')
 	def _compute_sale_count(self):
 		for record in self:
-			record.sale_count = len(record.evaluation_order_lines)
+			record.sale_count = len(record.evaluation_sale_order_lines)
 
 class EvaluationOrderLine(models.Model):
     _name = 'evaluation.order.line'
-    _inherit = 'sale.order.line'
+    _inherits = 'sale.order.line'
     _description = 'Evaluation Order Line'
 
     evaluation_id = fields.Many2one(
