@@ -75,8 +75,8 @@
 			<field name="context">{}</field>
 		</record>
 
-		<menuitem id="menu_sub_insurance" 
+<!-- 		<menuitem id="menu_sub_insurance" 
 			action="action_medical_insurance" 
-			sequence="1" parent="menu_insurance"/>
+			sequence="1" parent="menu_insurance"/> -->
 
 </openerp>
