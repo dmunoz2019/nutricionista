@@ -57,11 +57,11 @@
 
         <menuitem id="menu_medical_management" name="Medical" />
 
-        <menuitem id="menu_insurance" 
+<!--         <menuitem id="menu_insurance" 
                 name="Insurances" 
                 parent="main_menu_configartion"
                 sequence='9'/>
-
+ -->
 
 
 </openerp>
