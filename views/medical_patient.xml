@@ -403,9 +403,9 @@
             <field name="binding_view_types">form</field>
             <field name="view_mode">tree,form</field>
         </record>
-
+<!-- 
         <menuitem id="menu_medical_patient_code" action="action_medical_patient"
-            parent="menu_patients" sequence="0" />
+            parent="menu_patients" sequence="0" /> -->
 
         <record id="action_view_priscription_id2" model="ir.actions.act_window">
             <field name="name">Prescription Orders</field>
