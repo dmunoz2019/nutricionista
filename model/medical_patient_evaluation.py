@@ -3,6 +3,8 @@
 
 from odoo import models, fields, api, _
 
+from datetime import datetime, timedelta
+
 class medical_patient_evaluation(models.Model):
 	_name = 'medical.patient.evaluation'
 	_description = 'medical patient evaluation'
