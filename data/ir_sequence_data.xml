@@ -108,5 +108,15 @@
             <field name="padding">4</field>
         </record>
 
+                <!-- Definición de la secuencia para Medical Patient Evaluation -->
+                <record id="seq_medical_patient_evaluation" model="ir.sequence">
+                    <field name="name">Medical Patient Evaluation Sequence</field>
+                    <field name="code">medical.patient.evaluation</field>
+                    <field name="prefix">EVAL</field>
+                    <field name="padding">5</field>
+                    <field name="number_increment">1</field>
+                </record>
+
+
     </data>
 </odoo>

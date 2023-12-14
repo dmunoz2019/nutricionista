@@ -6,6 +6,19 @@
             <field name="arch" type="xml">
                 <form string="Patient">
                     <sheet>
+                        <group>
+                                 
+                                 
+                            <group>
+                                <field name="user_id" string="Doctor user ID"/>
+                                <field name="medical_appointment_date_id"/>
+                            </group>
+                            <group>
+                                <field name="next_appointment_id" domain="[('patient_id', '=', medical_patient_id)]"/>
+                            </group>
+
+                         
+                     </group>
                         <notebook>
                             <page string="Main Info">
                                 <group>

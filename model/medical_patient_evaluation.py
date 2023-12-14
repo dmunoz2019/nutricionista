@@ -7,6 +7,16 @@ class medical_patient_evaluation(models.Model):
 	_name = 'medical.patient.evaluation'
 	_description = 'medical patient evaluation'
 	_rec_name = 'medical_patient_id' 
+ 
+	name = fields.Char(string="Evaluation ID", readonly=True ,copy=True)
+
+
+	@api.model
+	def create(self, vals):
+		if vals.get('name', _('New')) == _('New'):
+			vals['name'] = self.env['ir.sequence'].next_by_code('medical.patient.evaluation') or _('New')
+		result = super(medical_patient_evaluation, self).create(vals)
+		return result
 
 	patient_id = fields.Many2one('res.partner',domain=[('is_patient','=',True)],string="Patient")
 	medical_patient_id = fields.Many2one('medical.patient',string="Patient",required=True)
@@ -225,5 +235,53 @@ class medical_patient_evaluation(models.Model):
 	secondary_conditions_ids = fields.One2many('medical.secondary_condition','patient_evaluation_id','Secondary Conditions')
 	diagnostic_hypothesis_ids = fields.One2many('medical.diagnostic_hypotesis','patient_evaluation_id','Procedures')
 	procedure_ids = fields.One2many('medical.directions','patient_evaluation_id','Procedures')
+	sale_order_lines = fields.One2many('sale.order.line','patient_evaluation_id','Lineas de venta')
+	payment_term_id = fields.Many2one('account.payment.term',string="Payment Term")
+	
+	sale_count = fields.Integer(compute='_compute_sale_count', string='Sale Order Count')
+ 
+	@api.depends('sale_order_lines')
+	def _compute_sale_count(self):
+		for record in self:
+			record.sale_count = len(record.sale_order_lines)
+   
+	def confirm_session_sale(self):
+		self.ensure_one()
+		# lets convert datetime to date
+		validity_date = self.start_evaluation.date() + timedelta(days=1)
+		sale_order_vals = {
+			'partner_id': self.patient_id.id,
+			'order_line': [(6, 0, self.sale_order_lines.ids)],
+			'validity_date': validity_date,
+			'date_order': self.start_evaluation.date(),
+			'payment_term_id': self.payment_term_id.id if self.payment_term_id else 1,
+			'user_id': self.env.user.id,
+			'tag_ids': [(6, 0, self.patient_id.tag_ids.ids)],
+			'origin': 'Appointment' if self.medical_appointment_date_id else 'Evaluation'
+		}
+		sale_order = self.env['sale.order'].create(sale_order_vals)
+		return {
+			'name': _('Sale Order'),
+			'view_type': 'form',
+			'view_mode': 'form',
+			'res_model': 'sale.order',
+			'res_id': sale_order.id,
+			'context': self.env.context,
+			'type': 'ir.actions.act_window',
+		}
+
+        		
+
+			
+   
+   
+   
+ 
 
 
+
+
+class SaleOrderLine(models.Model):
+	_inherit = 'sale.order.line'
+
+	patient_evaluation_id = fields.Many2one('medical.patient.evaluation','Evaluacion del paciente')
