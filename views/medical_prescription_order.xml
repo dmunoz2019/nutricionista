@@ -101,8 +101,8 @@
         </record>
 
 
-
+<!-- 
         <menuitem id="dental_prescription_child" action="action_medical_prescription_order"
-            name="Prescriptions" parent="menu_patients" sequence="2" />
+            name="Prescriptions" parent="menu_patients" sequence="2" /> -->
 
 </odoo>
