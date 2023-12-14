@@ -192,7 +192,7 @@ access_medical_medicament_doctor,access_medical_medicament_doctor,model_medical_
 
 
 access_pet_type,access_pet_type,model_pet_type,base.group_user,1,0,0,0
-access_medical_patient_evaluation,access_medical_patient_evaluation,model_medical_patient_evaluation,base.group_user,1,0,0,0
+access_medical_patient_evaluation,access_medical_patient_evaluation,model_medical_patient_evaluation,base.group_user,1,1,1,1
 access_medical_appointment,access_medical_appointment,model_medical_appointment,base.group_user,1,0,0,0
 access_medical_appointment1,access_medical_appointment1,model_medical_appointment,group_receptionist,1,1,1,0
 access_medical_insurance,medical.insurance,model_medical_insurance,bi_group_doctor,1,1,1,0
