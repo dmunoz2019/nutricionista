@@ -237,9 +237,8 @@ class medical_patient_evaluation(models.Model):
 	secondary_conditions_ids = fields.One2many('medical.secondary_condition','patient_evaluation_id','Secondary Conditions')
 	diagnostic_hypothesis_ids = fields.One2many('medical.diagnostic_hypotesis','patient_evaluation_id','Procedures')
 	procedure_ids = fields.One2many('medical.directions','patient_evaluation_id','Procedures')
-	sale_order_lines = fields.One2many('sale.order.line','patient_evaluation_id','Lineas de venta')
+	evaluation_order_lines = fields.One2many('evaluation.order.line','evaluation_id','Lineas de venta')
 
-      
 	payment_term_id = fields.Many2one('account.payment.term',string="Payment Term")
 	
 	sale_count = fields.Integer(compute='_compute_sale_count', string='Sale Order Count')
@@ -248,7 +247,7 @@ class medical_patient_evaluation(models.Model):
 		validity_date = self.start_evaluation + timedelta(days=1)
 		sale_order_vals = {
 			'partner_id': self.patient_id.id,
-			'order_line': [(6, 0, self.sale_order_lines.ids)],
+			'order_line': [(6, 0, self.evaluation_order_lines.ids)],
 			'validity_date':  validity_date,
 			'date_order': self.start_evaluation.date(),
 			'payment_term_id': self.payment_term_id.id if self.payment_term_id else 1,
@@ -265,27 +264,29 @@ class medical_patient_evaluation(models.Model):
 			'res_id': sale_order.id,
 			'context': self.env.context,
 		}
-
-
  
-	@api.depends('sale_order_lines')
+	@api.depends('evaluation_order_lines')
 	def _compute_sale_count(self):
 		for record in self:
-			record.sale_count = len(record.sale_order_lines)
-   
-	
-        		
+			record.sale_count = len(record.evaluation_order_lines)
 
-			
-   
-   
-   
- 
+class EvaluationOrderLine(models.Model):
+    _name = 'evaluation.order.line'
+    _inherit = 'sale.order.line'
+    _description = 'Evaluation Order Line'
 
+    evaluation_id = fields.Many2one(
+        comodel_name='medical.patient.evaluation',  # Reemplaza con el nombre real de tu modelo de evaluación
+        string='Evaluation Reference',
+        required=True,
+        ondelete='cascade',
+        index=True,
+        copy=False
+    )
 
-
-
-class SaleOrderLine(models.Model):
-	_inherit = 'sale.order.line'
-
-	patient_evaluation_id = fields.Many2one('medical.patient.evaluation','Evaluacion del paciente')
+    @api.depends('product_id', 'evaluation_id')
+    def _compute_name(self):
+        super(EvaluationOrderLine, self)._compute_name()
+        for record in self:
+            if record.evaluation_id:
+                record.name = f"{record.evaluation_id.name} - {record.product_id.name}"
