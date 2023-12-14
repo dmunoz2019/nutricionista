@@ -64,8 +64,8 @@
             <field name="view_mode">tree,form</field>
         </record>
 
-        <menuitem name="Lab Test Type" id="menu_lab_new_type_lab_test"
-            parent="main_menu_conf_laboratory" action="action_medical_test_type" />
+<!--         <menuitem name="Lab Test Type" id="menu_lab_new_type_lab_test"
+            parent="main_menu_conf_laboratory" action="action_medical_test_type" /> -->
 
 </odoo>
 
