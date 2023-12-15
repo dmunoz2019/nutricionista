@@ -118,8 +118,8 @@ access_res_partner_sale_manager_m,res.partner.sale.manager.m,base.model_res_part
 
 
 
-access_product_template_sale_user,product.template sale use,product.model_product_template,bi_group_doctor,1,0,0,0
-access_product_product_sale_user,product.product sale use,product.model_product_product,bi_group_doctor,1,0,0,0
+access_product_template_sale_user,product.template sale use,product.model_product_template,bi_group_doctor,1,1,1,1
+access_product_product_sale_user,product.product sale use,product.model_product_product,bi_group_doctor,1,1,1,1
 access_account_tax_user,account.tax.user,account.model_account_tax,bi_group_doctor,1,0,0,0
 access_ir_attachment_sales,ir.attachment.sales,base.model_ir_attachment,bi_group_doctor,1,1,1,0
 access_ir_attachment_manager,ir.attachment.manager,base.model_ir_attachment,bi_group_doctor,1,1,1,1
