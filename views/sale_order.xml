@@ -6,13 +6,12 @@
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/> <!-- Referencia a la vista base de sale.order -->
             <field name="arch" type="xml">
-                <!-- Utilizando XPath para insertar el botón en el encabezado -->
                 <xpath expr="//header" position="inside">
                     <button name="action_view_medical_appointments" 
                             string="View Medical Appointments" 
                             type="object" 
                             class="oe_highlight"
-                            attrs="{'invisible': [('has_medical_service', '=', False)]}"/>
+                            invisible="has_medical_service == False"/>
                 </xpath>
             </field>
         </record>
