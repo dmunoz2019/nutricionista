@@ -28,3 +28,13 @@ class SaleOrder(models.Model):
                         # Otros campos relevantes...
                     })
                     break
+    def action_view_medical_appointments(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Medical Appointments',
+            'view_mode': 'tree,form',
+            'res_model': 'medical.appointment',
+            'domain': [('patient_id', '=', self.partner_id.id)],
+            'context': {'default_patient_id': self.partner_id.id}
+        }
