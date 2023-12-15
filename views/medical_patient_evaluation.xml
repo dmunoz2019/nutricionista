@@ -6,8 +6,10 @@
             <field name="arch" type="xml">
                 <form string="Patient">
 <!--                 <header>
-<!--                     <button string="Confirmar venta" name="confirm_session_sale" type="object"/> -->
-                </header> -->
+                     <button string="Confirmar venta" name="confirm_session_sale" type="object"/> 
+                </header>  -->
+                        
+                        
                     <sheet>
                         <group>
                                  
