@@ -25,7 +25,7 @@ class SaleOrder(models.Model):
                     self.env['medical.appointment'].create({
                         'patient_id': self.partner_id.id,  # Asumiendo que el cliente es el paciente
                         'appointment_date': fields.Date.today(),
-                        # Otros campos relevantes...
+                        'doctor_id' : 1,
                     })
                     break
     def action_view_medical_appointments(self):
