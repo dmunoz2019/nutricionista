@@ -39,11 +39,16 @@ class SaleOrder(models.Model):
             available_doctor = self.find_available_doctor(desired_date)
 
             if available_doctor:
-                self.env['medical.appointment'].create({
-                    'patient_id': self.partner_id.id,
-                    'doctor_id': available_doctor.id,
-                    'appointment_date': desired_date
-                })
+                for line in self.order_line:
+                    if line.product_id.is_medical and line.product_id.type == 'service':
+                        for _ in range(int(line.product_uom_qty)):
+                            appointment_vals = {
+                                'patient_id': self.partner_id.id,
+                                'doctor_id': available_doctor.id,
+                                'appointment_date': desired_date
+                                # Otros campos relevantes...
+                            }
+                            self.env['medical.appointment'].create(appointment_vals)
 
     def action_view_medical_appointments(self):
         self.ensure_one()
