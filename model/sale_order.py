@@ -36,5 +36,7 @@ class SaleOrder(models.Model):
             'view_mode': 'tree,form',
             'res_model': 'medical.appointment',
             'domain': [('patient_id', '=', self.partner_id.id)],
-            'context': {'default_patient_id': self.partner_id.id}
+            'context': {'default_patient_id': self.partner_id.id},
+            'views': [(self.env.ref('basic_hms.medical_appointment_tree_view').id, 'tree'),
+                      (False, 'form')]
         }
