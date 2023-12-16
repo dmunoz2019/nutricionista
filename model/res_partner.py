@@ -17,7 +17,7 @@ class res_partner(models.Model):
     is_institution = fields.Boolean('Institution')
     company_insurance_ids = fields.One2many('medical.insurance','insurance_compnay_id','Insurance')
     reference = fields.Char('ID Number')
-    medical_patient_id = fields.Many2one('medical.patient', string="Medical Patient", compute='_compute_medical_patient', store=True)
+    # medical_patient_id = fields.Many2one('medical.patient', string="Medical Patient", compute='_compute_medical_patient', store=True)
 
         # @api.depends('is_patient')
         # def _compute_medical_patient(self):
